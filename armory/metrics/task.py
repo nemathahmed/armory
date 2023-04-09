@@ -1956,7 +1956,8 @@ class GlobalHOTA:
                 for k in ["HOTA", "DetA", "AssA"]:
                     value = per_class_all_videos_metrics[tracked_class][k].mean()
                     results[f"mean_{k.lower()}"] = value
-
+                    
+        print('YAYYYYYYYY ----  ###################$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
         return results
 
 
