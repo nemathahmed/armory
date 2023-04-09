@@ -1741,6 +1741,7 @@ def _dapricot_patch_target_success(y, y_pred, iou_threshold=0.1, conf_threshold=
     return 0
 
 
+import json
 class HOTA_metrics:
     def __init__(self, tracked_classes=("pedestrian",), coco_format: bool = False):
         from collections import defaultdict
@@ -1875,6 +1876,9 @@ class HOTA_metrics:
 
         # Ensure ids are unique per timestep after preproc.
         self._BaseDataset._check_unique_ids(data, after_preproc=True)
+
+        with open("/raid/nshaik6/GARD/sample.json", "w") as outfile:
+            outfile.write(data)
 
         return data
 
