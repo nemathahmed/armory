@@ -1826,6 +1826,7 @@ class HOTA_metrics:
         num_gt_dets, num_tracker_dets = 0, 0
         for t in range(num_timesteps):
             # Get all data
+            print('Timesteps ',num_timesteps)
             t_index = gt_data[:, 0] == t
             gt_ids, gt_dets, gt_classes = (
                 gt_data[t_index, x] for x in (1, slice(2, 6), 7)
@@ -1877,6 +1878,9 @@ class HOTA_metrics:
         # Ensure ids are unique per timestep after preproc.
         self._BaseDataset._check_unique_ids(data, after_preproc=True)
         print(data)
+        for keys in data:
+            if(type(data[keys])!=int):
+                data[keys]=data[keys].tolist()
         # json_object = json.dumps(data, indent=4)
         # with open("/raid/nshaik6/GARD/sample.json", "w") as outfile:
         #     outfile.write(json_object)
