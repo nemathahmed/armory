@@ -1878,7 +1878,7 @@ class HOTA_metrics:
         # Ensure ids are unique per timestep after preproc.
         self._BaseDataset._check_unique_ids(data, after_preproc=True)
         print(data)
-        datax=data
+        datax=data.copy()
         for keys in datax:
             if(type(datax[keys])!=int):
                 for i in range(len(datax[keys])):
