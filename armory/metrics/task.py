@@ -1878,13 +1878,14 @@ class HOTA_metrics:
         # Ensure ids are unique per timestep after preproc.
         self._BaseDataset._check_unique_ids(data, after_preproc=True)
         print(data)
-        for keys in data:
-            if(type(data[keys])!=int):
-                for i in range(len(data[keys])):
-                    data[keys][i]=data[keys][i].tolist()
-        # json_object = json.dumps(data, indent=4)
-        # with open("/raid/nshaik6/GARD/sample.json", "w") as outfile:
-        #     outfile.write(json_object)
+        datax=data
+        for keys in datax:
+            if(type(datax[keys])!=int):
+                for i in range(len(datax[keys])):
+                    datax[keys][i]=datax[keys][i].tolist()
+        json_object = json.dumps(datax, indent=4)
+        with open("/raid/nshaik6/GARD/sample.json", "w") as outfile:
+            outfile.write(json_object)
 
         return data
 
