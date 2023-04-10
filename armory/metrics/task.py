@@ -1880,7 +1880,8 @@ class HOTA_metrics:
         print(data)
         for keys in data:
             if(type(data[keys])!=int):
-                data[keys]=data[keys].tolist()
+                for i in range(len(data[keys])):
+                    data[keys][i]=data[keys[i]].tolist()
         # json_object = json.dumps(data, indent=4)
         # with open("/raid/nshaik6/GARD/sample.json", "w") as outfile:
         #     outfile.write(json_object)
