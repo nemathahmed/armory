@@ -31,7 +31,13 @@ element = MetricNameSpace()
 
 # Maps batch or element metrics to aggregation functions
 AGGREGATION_MAP = {}
+import datetime
 
+def save_file_with_datetime(filename):
+    current_time = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    postfix = "_" + current_time
+    filename_with_datetime = filename + postfix
+    return filename_with_datetime
 
 def aggregator(metric, name=None):
     """
@@ -1884,7 +1890,7 @@ class HOTA_metrics:
                 for i in range(len(datax[keys])):
                     datax[keys][i]=datax[keys][i].tolist()
         json_object = json.dumps(datax, indent=4)
-        with open("/raid/nshaik6/GARD/sample.json", "w") as outfile:
+        with open("/raid/nshaik6/GARD/"+save_file_with_datetime("sample")+".json", "w") as outfile:
             outfile.write(json_object)
 
         return data
